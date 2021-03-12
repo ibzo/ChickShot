@@ -1,16 +1,22 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
+    public AudioClip ShootingAudio;
+    public GameObject ShootingVFX;
     public GameObject BulletPrefab;
     public Transform BulletPosition;
     public float MovementSpeed = 5f;
     public float FireRate = 0.75f;
+    public Slider HealthBar;
     Rigidbody rigidbody;
 
+    int health = 100;
     float nextFireTime;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -26,6 +32,28 @@ public class Player : MonoBehaviour
             Fire();
     }
 
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag == "Bullet")
+        {
+            var bullet = collision.gameObject.GetComponent<Bullet>();
+            TakeDamage(bullet.Damage);
+        }
+    }
+
+    private void TakeDamage(int damage)
+    {
+        health -= damage;
+        HealthBar.value = health;
+        if (health <= 0)
+            PlayerDied();
+    }
+
+    private void PlayerDied()
+    {
+        gameObject.SetActive(false);
+    }
+
     private void Fire()
     {
         if (Time.time > nextFireTime)
@@ -37,7 +65,8 @@ public class Player : MonoBehaviour
             if (bulletScript != null)
                 bulletScript.InitializeBullet(transform.rotation * Vector3.forward);
 
-            //bullet.GetComponent<Bullet>()?.InitializeBullet(transform.rotation * Vector3.forward);
+            AudioManager.Instance.Play3D(ShootingAudio, BulletPosition.position, 0.1f);
+            VFXManager.Instance.Play(ShootingVFX, BulletPosition.position);
         }
 
         

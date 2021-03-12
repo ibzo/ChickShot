@@ -4,7 +4,10 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
+    public AudioClip BulletHitAudio;
+    public GameObject BulletHitVFX;
     public float BulletSpeed;
+    public int Damage = 5;
     Rigidbody rigidbody;
 
     private void Awake()
@@ -20,6 +23,8 @@ public class Bullet : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
+        AudioManager.Instance.Play3D(BulletHitAudio, transform.position, 0.1f) ;
+        VFXManager.Instance.Play(BulletHitVFX, transform.position);
         Destroy(gameObject);
     }
 }
