@@ -13,12 +13,22 @@ public class MultiplayerLobby : MonoBehaviourPunCallbacks
     public InputField PlayerName;
 
     [Header("Create Room Panel")]
-    
     public InputField RoomName;
 
     [Header("Inside Room Panel")]
     public GameObject TextPrefab;
     public Transform InsideRoomContent;
+
+    [Header("List Rooms Panel")]
+    public GameObject RoomEntryPrefab;
+    public Transform ListRoomsContent;
+
+    Dictionary<string, RoomInfo> cachedRoomList;
+
+    private void Awake()
+    {
+        cachedRoomList = new Dictionary<string, RoomInfo>();
+    }
 
     private void Start()
     {
@@ -44,6 +54,14 @@ public class MultiplayerLobby : MonoBehaviourPunCallbacks
         }
     }
 
+    private void DeleteChildren(Transform parent)
+    {
+        foreach (Transform child in parent)
+        {
+            Destroy(child.gameObject);
+        }
+    }
+
     #endregion
 
     #region Button Clicks
@@ -65,7 +83,36 @@ public class MultiplayerLobby : MonoBehaviourPunCallbacks
             roomOptions.MaxPlayers = 4;
             PhotonNetwork.CreateRoom(RoomName.text, roomOptions);
         }
-        
+    }
+
+    public void StartGameClicked()
+    {
+        PhotonNetwork.CurrentRoom.IsOpen = false;
+        PhotonNetwork.CurrentRoom.IsVisible = false;
+        PhotonNetwork.LoadLevel("Multiplayer");
+    }
+
+    public void LeaveRoomClicked()
+    {
+        PhotonNetwork.LeaveRoom();
+        DeleteChildren(InsideRoomContent);
+        ActivatePanel("Selection");
+    }
+
+    public void ListRoomsClicked()
+    {
+        if (!PhotonNetwork.InLobby)
+            PhotonNetwork.JoinLobby();
+
+        ActivatePanel("ListRooms");
+    }
+
+    public void LeaveLobbyClicked()
+    {
+        if (PhotonNetwork.InLobby)
+            PhotonNetwork.LeaveLobby();
+
+        ActivatePanel("Selection");
     }
 
     public void Disconnect()
@@ -102,6 +149,7 @@ public class MultiplayerLobby : MonoBehaviourPunCallbacks
         foreach (var player in PhotonNetwork.PlayerList)
         {
             var newPlayerRoomEntry = Instantiate(TextPrefab, InsideRoomContent);
+            newPlayerRoomEntry.name = player.NickName;
             newPlayerRoomEntry.GetComponent<Text>().text = player.NickName;
         }
     }
@@ -109,6 +157,74 @@ public class MultiplayerLobby : MonoBehaviourPunCallbacks
     public override void OnCreateRoomFailed(short returnCode, string message)
     {
         Debug.Log("Room Creation Failed!");
+    }
+
+    public override void OnJoinedLobby()
+    {
+        Debug.Log("Joined Lobby!");
+    }
+
+    public override void OnLeftLobby()
+    {
+        Debug.Log("Left Lobby!");
+    }
+
+    public override void OnPlayerEnteredRoom(Photon.Realtime.Player newPlayer)
+    {
+        Debug.Log("Player Entered Room!");
+
+        var newPlayerRoomEntry = Instantiate(TextPrefab, InsideRoomContent);
+        newPlayerRoomEntry.name = newPlayer.NickName;
+        newPlayerRoomEntry.GetComponent<Text>().text = newPlayer.NickName;
+    }
+
+    public override void OnPlayerLeftRoom(Photon.Realtime.Player otherPlayer)
+    {
+        Debug.Log("Player Left Room!");
+        foreach (Transform child in InsideRoomContent)
+        {
+            if (child.name == otherPlayer.NickName)
+                Destroy(child.gameObject);
+        }
+    }
+
+    public override void OnRoomListUpdate(List<RoomInfo> roomList)
+    {
+        Debug.Log("OnRoomListUpdate: " + roomList.Count);
+
+        DeleteChildren(ListRoomsContent);
+
+        UpdateCacheRoomList(roomList);
+
+        //Update UI
+        foreach (var room in cachedRoomList)
+        {
+            var newRoomEntry = Instantiate(RoomEntryPrefab, ListRoomsContent);
+            var roomEntryScript = newRoomEntry.GetComponent<RoomEntry>();
+            roomEntryScript.RoomName = room.Key;
+            roomEntryScript.RoomText.text = $"[{room.Key}] - ({room.Value} / {room.Value.MaxPlayers})";
+            //roomEntryScript.RoomText.text = "[" + room.Name + " - (" + room.PlayerCount + " / " + room.MaxPlayers + ")";
+        }
+    }
+
+    private void UpdateCacheRoomList(List<RoomInfo> roomList)
+    {
+        foreach (var room in roomList)
+        {
+            //Remove from cache
+            if (!room.IsOpen || !room.IsVisible || room.RemovedFromList)
+            {
+                if (cachedRoomList.ContainsKey(room.Name))
+                    cachedRoomList.Remove(room.Name);
+
+                continue;
+            }
+
+            if (cachedRoomList.ContainsKey(room.Name))
+                cachedRoomList[room.Name] = room;
+            else
+                cachedRoomList.Add(room.Name, room);
+        }
     }
 
     #endregion
