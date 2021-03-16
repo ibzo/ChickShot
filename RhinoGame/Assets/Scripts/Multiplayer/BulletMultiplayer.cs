@@ -8,6 +8,8 @@ public class BulletMultiplayer : MonoBehaviour
     public GameObject BulletHitVFX;
     public float BulletSpeed;
     public int Damage = 5;
+    public Photon.Realtime.Player Owner;
+
     Rigidbody rigidbody;
 
     private void Awake()
@@ -15,10 +17,11 @@ public class BulletMultiplayer : MonoBehaviour
         rigidbody = GetComponent<Rigidbody>();
     }
 
-    public void InitializeBullet(Vector3 originalDirection)
+    public void InitializeBullet(Vector3 originalDirection, Photon.Realtime.Player player)
     {
         transform.forward = originalDirection;
         rigidbody.velocity = transform.forward * BulletSpeed;
+        Owner = player;
     }
 
     private void OnCollisionEnter(Collision collision)
