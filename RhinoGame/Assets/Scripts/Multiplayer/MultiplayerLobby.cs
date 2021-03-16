@@ -18,6 +18,7 @@ public class MultiplayerLobby : MonoBehaviourPunCallbacks
     [Header("Inside Room Panel")]
     public GameObject TextPrefab;
     public Transform InsideRoomContent;
+    public GameObject StartGameButton;
 
     [Header("List Rooms Panel")]
     public GameObject RoomEntryPrefab;
@@ -28,6 +29,7 @@ public class MultiplayerLobby : MonoBehaviourPunCallbacks
     private void Awake()
     {
         cachedRoomList = new Dictionary<string, RoomInfo>();
+        PhotonNetwork.AutomaticallySyncScene = true;
     }
 
     private void Start()
@@ -69,6 +71,11 @@ public class MultiplayerLobby : MonoBehaviourPunCallbacks
     {
         PhotonNetwork.LocalPlayer.NickName = PlayerName.text;
         PhotonNetwork.ConnectUsingSettings();
+    }
+
+    public void JoinRandomRoomClicked()
+    {
+        PhotonNetwork.JoinRandomRoom();
     }
 
     public void CreateRoomClicked()
@@ -145,6 +152,7 @@ public class MultiplayerLobby : MonoBehaviourPunCallbacks
     {
         Debug.Log("Room Joined!");
         ActivatePanel("InsideRoom");
+        StartGameButton.SetActive(PhotonNetwork.IsMasterClient);
 
         foreach (var player in PhotonNetwork.PlayerList)
         {
@@ -167,6 +175,8 @@ public class MultiplayerLobby : MonoBehaviourPunCallbacks
     public override void OnLeftLobby()
     {
         Debug.Log("Left Lobby!");
+        cachedRoomList.Clear();
+        DeleteChildren(ListRoomsContent);
     }
 
     public override void OnPlayerEnteredRoom(Photon.Realtime.Player newPlayer)
@@ -186,6 +196,11 @@ public class MultiplayerLobby : MonoBehaviourPunCallbacks
             if (child.name == otherPlayer.NickName)
                 Destroy(child.gameObject);
         }
+    }
+
+    public override void OnMasterClientSwitched(Photon.Realtime.Player newMasterClient)
+    {
+        StartGameButton.SetActive(PhotonNetwork.IsMasterClient);
     }
 
     public override void OnRoomListUpdate(List<RoomInfo> roomList)

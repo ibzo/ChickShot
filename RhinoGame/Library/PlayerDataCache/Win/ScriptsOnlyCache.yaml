@@ -3,11 +3,14 @@ ScriptsOnlyBuild:
     Assembly-CSharp.dll:
     - AudioManager
     - Bullet
+    - BulletMultiplayer
     - CameraController
     - Enemy
     - LevelManager
+    - LevelManagerMultiplayer
     - MultiplayerLobby
     - Player
+    - PlayerMultiplayer
     - RhinoGame.UIBillboard
     - RoomEntry
     - SceneLoader
@@ -23,6 +26,8 @@ ScriptsOnlyBuild:
     - Photon.Pun.Demo.SlotRacer.PlayerControl
     - Photon.Pun.Demo.SlotRacer.Utils.SplineWalker
     PhotonUnityNetworking.Editor.dll:
+    - Photon.Pun.PhotonTransformViewEditor
+    - Photon.Pun.PhotonViewInspector
     - Photon.Pun.PunSceneSettings
     PhotonUnityNetworking.dll:
     - Photon.Pun.PhotonAnimatorView
@@ -82,6 +87,8 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 81
       Script: {instanceID: 0}
+    - Class: 83
+      Script: {instanceID: 0}
     - Class: 90
       Script: {instanceID: 0}
     - Class: 91
@@ -119,31 +126,35 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 12340}
     - Class: 114
-      Script: {instanceID: 12530}
+      Script: {instanceID: 12532}
     - Class: 114
-      Script: {instanceID: 12606}
+      Script: {instanceID: 12608}
     - Class: 114
-      Script: {instanceID: 12686}
+      Script: {instanceID: 12688}
     - Class: 114
-      Script: {instanceID: 12694}
+      Script: {instanceID: 12696}
     - Class: 114
-      Script: {instanceID: 12910}
+      Script: {instanceID: 12912}
     - Class: 114
-      Script: {instanceID: 12928}
+      Script: {instanceID: 12930}
     - Class: 114
-      Script: {instanceID: 12936}
+      Script: {instanceID: 12938}
     - Class: 114
-      Script: {instanceID: 13062}
+      Script: {instanceID: 13064}
     - Class: 114
-      Script: {instanceID: 13156}
+      Script: {instanceID: 13158}
     - Class: 114
-      Script: {instanceID: 13416}
-    - Class: 114
-      Script: {instanceID: 13502}
+      Script: {instanceID: 13418}
     - Class: 114
       Script: {instanceID: 13504}
     - Class: 114
-      Script: {instanceID: 13534}
+      Script: {instanceID: 13506}
+    - Class: 114
+      Script: {instanceID: 13536}
+    - Class: 114
+      Script: {instanceID: 76970}
+    - Class: 114
+      Script: {instanceID: 76976}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -193,8 +204,6 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 48
       Script: {instanceID: 0}
-    - Class: 54
-      Script: {instanceID: 0}
     - Class: 64
       Script: {instanceID: 0}
     - Class: 65
@@ -203,53 +212,25 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 82
       Script: {instanceID: 0}
-    - Class: 83
-      Script: {instanceID: 0}
     - Class: 104
       Script: {instanceID: 0}
     - Class: 108
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 11242}
-    - Class: 114
-      Script: {instanceID: 11272}
-    - Class: 114
-      Script: {instanceID: 11480}
-    - Class: 114
-      Script: {instanceID: 11518}
-    - Class: 114
-      Script: {instanceID: 11654}
+      Script: {instanceID: 11994}
     - Class: 114
       Script: {instanceID: 12318}
     - Class: 114
-      Script: {instanceID: 12906}
+      Script: {instanceID: 13168}
     - Class: 114
-      Script: {instanceID: 13062}
+      Script: {instanceID: 13506}
     - Class: 114
-      Script: {instanceID: 13110}
-    - Class: 114
-      Script: {instanceID: 13156}
-    - Class: 114
-      Script: {instanceID: 13166}
-    - Class: 114
-      Script: {instanceID: 13502}
+      Script: {instanceID: 77628}
     - Class: 115
-      Script: {instanceID: 0}
-    - Class: 135
       Script: {instanceID: 0}
     - Class: 157
       Script: {instanceID: 0}
     - Class: 196
-      Script: {instanceID: 0}
-    - Class: 198
-      Script: {instanceID: 0}
-    - Class: 199
-      Script: {instanceID: 0}
-    - Class: 222
-      Script: {instanceID: 0}
-    - Class: 223
-      Script: {instanceID: 0}
-    - Class: 224
       Script: {instanceID: 0}
     Assets/Scenes/MultiplayerLobby.unity:
     - Class: 1
@@ -301,23 +282,23 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 12218}
     - Class: 114
-      Script: {instanceID: 12594}
+      Script: {instanceID: 12450}
     - Class: 114
-      Script: {instanceID: 12696}
+      Script: {instanceID: 12596}
     - Class: 114
-      Script: {instanceID: 12708}
+      Script: {instanceID: 12698}
     - Class: 114
-      Script: {instanceID: 12738}
+      Script: {instanceID: 12710}
     - Class: 114
-      Script: {instanceID: 13062}
+      Script: {instanceID: 12740}
     - Class: 114
-      Script: {instanceID: 13156}
+      Script: {instanceID: 13064}
     - Class: 114
-      Script: {instanceID: 13502}
+      Script: {instanceID: 13158}
     - Class: 114
       Script: {instanceID: 13504}
     - Class: 114
-      Script: {instanceID: 33024}
+      Script: {instanceID: 13506}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -384,17 +365,17 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 12318}
     - Class: 114
-      Script: {instanceID: 12906}
+      Script: {instanceID: 12908}
     - Class: 114
-      Script: {instanceID: 13062}
+      Script: {instanceID: 13064}
     - Class: 114
-      Script: {instanceID: 13110}
+      Script: {instanceID: 13112}
     - Class: 114
-      Script: {instanceID: 13156}
+      Script: {instanceID: 13158}
     - Class: 114
-      Script: {instanceID: 13166}
+      Script: {instanceID: 13168}
     - Class: 114
-      Script: {instanceID: 13502}
+      Script: {instanceID: 13504}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 135
@@ -1124,6 +1105,12 @@ ScriptsOnlyBuild:
     className: CurrentRoomEmptyRoomTtlProperty
   - hash:
       serializedVersion: 2
+      Hash: ba24816d20a7ed60346a61f5e50fbbee
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: RoomEntry
+  - hash:
+      serializedVersion: 2
       Hash: 4fd8bf02e3089425d3502e26c44ba31a
     assemblyName: Unity.TextMeshPro.dll
     namespaceName: TMPro
@@ -1232,7 +1219,7 @@ ScriptsOnlyBuild:
     className: SplineWalker
   - hash:
       serializedVersion: 2
-      Hash: 20dedadfd04af9909d7a1a8328a4d615
+      Hash: 739aac1e6200e3807ed034a8ac71ff58
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: MultiplayerLobby
@@ -1784,10 +1771,22 @@ ScriptsOnlyBuild:
     className: PlayableTrack
   - hash:
       serializedVersion: 2
-      Hash: ba24816d20a7ed60346a61f5e50fbbee
+      Hash: 84ccbd4d9b4768306ba1322c729d14d5
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
-    className: RoomEntry
+    className: PlayerMultiplayer
+  - hash:
+      serializedVersion: 2
+      Hash: b29f99e53f5bd0ae6e3e66e412cb17d0
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: BulletMultiplayer
+  - hash:
+      serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: LevelManagerMultiplayer
   platform: 5
   scenePathNames:
   - Assets/Scenes/Main.unity
