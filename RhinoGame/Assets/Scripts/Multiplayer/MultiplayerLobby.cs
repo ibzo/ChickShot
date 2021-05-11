@@ -217,7 +217,7 @@ public class MultiplayerLobby : MonoBehaviourPunCallbacks
             var newRoomEntry = Instantiate(RoomEntryPrefab, ListRoomsContent);
             var roomEntryScript = newRoomEntry.GetComponent<RoomEntry>();
             roomEntryScript.RoomName = room.Key;
-            roomEntryScript.RoomText.text = $"[{room.Key}] - ({room.Value} / {room.Value.MaxPlayers})";
+            roomEntryScript.RoomText.text = $"[{room.Key}] - ( {room.Value} / {room.Value.MaxPlayers} )";
             //roomEntryScript.RoomText.text = "[" + room.Name + " - (" + room.PlayerCount + " / " + room.MaxPlayers + ")";
         }
     }
