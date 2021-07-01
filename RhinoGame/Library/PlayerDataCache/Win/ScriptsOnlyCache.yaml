@@ -11,6 +11,7 @@ ScriptsOnlyBuild:
     - LevelManagerMultiplayer
     - MultiplayerInGameScore
     - MultiplayerLobby
+    - PersonalBestPopUp
     - Player
     - PlayerMultiplayer
     - RhinoGame.UIBillboard
@@ -109,6 +110,8 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 11254}
     - Class: 114
+      Script: {instanceID: 11256}
+    - Class: 114
       Script: {instanceID: 11280}
     - Class: 114
       Script: {instanceID: 11288}
@@ -127,37 +130,41 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 12084}
     - Class: 114
-      Script: {instanceID: 12278}
+      Script: {instanceID: 12086}
     - Class: 114
-      Script: {instanceID: 12294}
+      Script: {instanceID: 12280}
     - Class: 114
-      Script: {instanceID: 12364}
+      Script: {instanceID: 12296}
     - Class: 114
-      Script: {instanceID: 12556}
+      Script: {instanceID: 12366}
     - Class: 114
-      Script: {instanceID: 12632}
+      Script: {instanceID: 12558}
     - Class: 114
-      Script: {instanceID: 12712}
+      Script: {instanceID: 12622}
     - Class: 114
-      Script: {instanceID: 12720}
+      Script: {instanceID: 12634}
     - Class: 114
-      Script: {instanceID: 12936}
+      Script: {instanceID: 12714}
     - Class: 114
-      Script: {instanceID: 12954}
+      Script: {instanceID: 12722}
     - Class: 114
-      Script: {instanceID: 12962}
+      Script: {instanceID: 12938}
     - Class: 114
-      Script: {instanceID: 13088}
+      Script: {instanceID: 12956}
     - Class: 114
-      Script: {instanceID: 13182}
+      Script: {instanceID: 12964}
     - Class: 114
-      Script: {instanceID: 13444}
+      Script: {instanceID: 13090}
     - Class: 114
-      Script: {instanceID: 13530}
+      Script: {instanceID: 13184}
+    - Class: 114
+      Script: {instanceID: 13446}
     - Class: 114
       Script: {instanceID: 13532}
     - Class: 114
-      Script: {instanceID: 13562}
+      Script: {instanceID: 13534}
+    - Class: 114
+      Script: {instanceID: 13564}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -232,17 +239,17 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 12008}
     - Class: 114
-      Script: {instanceID: 12306}
+      Script: {instanceID: 12308}
     - Class: 114
-      Script: {instanceID: 12342}
+      Script: {instanceID: 12344}
     - Class: 114
-      Script: {instanceID: 13088}
+      Script: {instanceID: 13090}
     - Class: 114
-      Script: {instanceID: 13192}
+      Script: {instanceID: 13194}
     - Class: 114
-      Script: {instanceID: 13394}
+      Script: {instanceID: 13396}
     - Class: 114
-      Script: {instanceID: 13532}
+      Script: {instanceID: 13534}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -317,23 +324,23 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 12008}
     - Class: 114
-      Script: {instanceID: 12234}
+      Script: {instanceID: 12236}
     - Class: 114
-      Script: {instanceID: 12474}
+      Script: {instanceID: 12476}
     - Class: 114
-      Script: {instanceID: 12620}
+      Script: {instanceID: 12622}
     - Class: 114
-      Script: {instanceID: 12722}
+      Script: {instanceID: 12724}
     - Class: 114
-      Script: {instanceID: 12734}
+      Script: {instanceID: 12736}
     - Class: 114
-      Script: {instanceID: 13088}
+      Script: {instanceID: 13090}
     - Class: 114
-      Script: {instanceID: 13182}
-    - Class: 114
-      Script: {instanceID: 13530}
+      Script: {instanceID: 13184}
     - Class: 114
       Script: {instanceID: 13532}
+    - Class: 114
+      Script: {instanceID: 13534}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -408,19 +415,19 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 11666}
     - Class: 114
-      Script: {instanceID: 12342}
+      Script: {instanceID: 12344}
     - Class: 114
-      Script: {instanceID: 12932}
+      Script: {instanceID: 12934}
     - Class: 114
-      Script: {instanceID: 13088}
+      Script: {instanceID: 13090}
     - Class: 114
-      Script: {instanceID: 13136}
+      Script: {instanceID: 13138}
     - Class: 114
-      Script: {instanceID: 13182}
+      Script: {instanceID: 13184}
     - Class: 114
-      Script: {instanceID: 13192}
+      Script: {instanceID: 13194}
     - Class: 114
-      Script: {instanceID: 13530}
+      Script: {instanceID: 13532}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 135
@@ -976,6 +983,12 @@ ScriptsOnlyBuild:
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: BulletMultiplayer
+  - hash:
+      serializedVersion: 2
+      Hash: dbb4c891ac28437967b03871949d0c69
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: PersonalBestPopUp
   - hash:
       serializedVersion: 2
       Hash: f8f5c34557f4103b6547d8f956cec6ea
