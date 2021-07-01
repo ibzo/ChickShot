@@ -16,15 +16,21 @@ public class MultiplayerInGameScore : MonoBehaviourPunCallbacks
     {
         playerListEntries = new Dictionary<int, GameObject>();
 
-        foreach (var player in PhotonNetwork.PlayerList)
+        foreach (Photon.Realtime.Player player in PhotonNetwork.PlayerList)
         {
-            var playerScoreObject = Instantiate(PlayerScorePrefab, Panel);
+            GameObject playerScoreObject = Instantiate(PlayerScorePrefab, Panel);
             var textScore = playerScoreObject.GetComponent<Text>();
             player.SetScore(0);
             textScore.text = $"{player.NickName}\nScore: {player.GetScore()}";
 
             playerListEntries[player.ActorNumber] = playerScoreObject;
         }
+    }
+
+    public override void OnPlayerLeftRoom(Photon.Realtime.Player otherPlayer)
+    {
+        Destroy(playerListEntries[otherPlayer.ActorNumber].gameObject);
+        playerListEntries.Remove(otherPlayer.ActorNumber);
     }
 
     public override void OnPlayerPropertiesUpdate(Photon.Realtime.Player targetPlayer, ExitGames.Client.Photon.Hashtable changedProps)

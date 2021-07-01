@@ -71,8 +71,37 @@ public class LevelManagerMultiplayer : MonoBehaviourPunCallbacks
 
         if (targetPlayer.GetScore() == MaxKills && timer > 0)
         {
-            WinnerText.text = targetPlayer.NickName;
-            GameOverPopUp.SetActive(true);
+            GameOver(targetPlayer);
+        }
+    }
+
+    private void GameOver(Photon.Realtime.Player targetPlayer)
+    {
+        WinnerText.text = targetPlayer.NickName;
+        GameOverPopUp.SetActive(true);
+        StorePersonalBest();
+    }
+
+    //sets new personal best if greater than previous best score
+    private void StorePersonalBest()
+    {
+        var username = PhotonNetwork.LocalPlayer.NickName;
+        var score = PhotonNetwork.LocalPlayer.GetScore();
+        var totalPlayersInGame = PhotonNetwork.CurrentRoom.PlayerCount;
+        var roomName = PhotonNetwork.CurrentRoom.Name;
+
+        var playerData = GameManager.Instance.playerData;
+        if(score >= playerData.bestScore)
+        {
+            //set new best
+            playerData.username = username;
+            playerData.bestScore = score;
+            playerData.date = DateTime.UtcNow;
+            playerData.totalPlayersInTheGame = totalPlayersInGame;
+            playerData.roomName = roomName;
+            playerData.isPlayerDataUpdated = true;
+
+            GameManager.Instance.SavePlayerData();
         }
     }
 

@@ -1,0 +1,1 @@
+{"id":"18ac9d81-a40a-4f35-bce0-64d161fddb61","username":"client2","bestScore":0,"date":"2021-06-28T16:21:45.786036Z","totalPlayersInTheGame":2,"roomName":"new","isPlayerDataUpdated":true}

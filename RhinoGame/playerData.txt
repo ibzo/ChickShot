@@ -1,0 +1,1 @@
+{"id":"93b9cd5a-5bd6-401c-9d45-c3acacaecb85","username":null,"bestScore":0,"date":"0001-01-01T00:00:00","totalPlayersInTheGame":0,"roomName":null,"isPlayerDataUpdated":false}
