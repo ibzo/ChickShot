@@ -1,1 +1,1 @@
-{"id":"7c4b4a55-8bca-408f-8ed1-f39a8842f295","username":null,"bestScore":0,"date":"0001-01-01T00:00:00","totalPlayersInTheGame":0,"roomName":null,"isPlayerDataUpdated":false}
+{"id":"e9d1521d-19db-454b-91d4-d689a36d76ff","username":"Player2531","bestScore":3,"date":"2021-07-02T08:48:58.9708988Z","totalPlayersInTheGame":2,"roomName":"Demo","isPlayerDataUpdated":true}
