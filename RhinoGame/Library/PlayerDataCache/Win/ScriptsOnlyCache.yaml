@@ -1865,5 +1865,4 @@ ScriptsOnlyBuild:
   - Assets/Scenes/Singleplayer.unity
   - Assets/Scenes/MultiplayerLobby.unity
   - Assets/Scenes/Multiplayer.unity
-  playerPath: D:/University/3rd Year/Networked Games & Security/Tutorials/Tutorial
-    2/Extra Clients/ChickShot.exe
+  playerPath: D:/Personal Files/Career/Game Dev/Solo/ChickShot/Build/Windows/x86/ChickShot.exe
