@@ -118,8 +118,6 @@ public class PlayerMultiplayer : MonoBehaviour, IPunObservable
             AudioManager.Instance.Play3D(ShootingAudio, BulletPosition.position, 0.1f);
             VFXManager.Instance.Play(ShootingVFX, BulletPosition.position);
         }
-
-
     }
 
     private void Move()
