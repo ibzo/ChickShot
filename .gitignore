@@ -69,3 +69,6 @@ crashlytics-build.properties
 # Temporary auto-generated Android Assets
 /[Aa]ssets/[Ss]treamingAssets/aa.meta
 /[Aa]ssets/[Ss]treamingAssets/aa/*
+ChickShot/Library/CurrentLayout-default.dwlt
+ChickShot/Library/EditorInstance.json
+ChickShot/Temp/UnityLockfile
